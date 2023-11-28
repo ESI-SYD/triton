@@ -23,6 +23,5 @@ runs:
           Notification: ${{ inputs.jobname }} failed in backend test,
 
           For details pls see "github.com/${{ inputs.ghrepo }}/actions/runs/${{ inputs.ghrunid }}"
-        ignore_cert: true
         to: ${{ inputs.jobowner }}
         from: github_action@github.com
