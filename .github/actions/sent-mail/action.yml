@@ -18,8 +18,8 @@ runs:
       with:
         server_address: ${{ secrets.MAIL_SERVER }}
         server_port: ${{ secrets.MAIL_SERVER_PORT }}
-    		username: ${{ secrets.MAIL_USERNAME }}
-    		password: ${{ secrets.MAIL_PASSWORD }}        
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}        
         subject: "Failure Notification - ${{ inputs.jobname }}"
         body: |
           Notification: ${{ inputs.jobname }} failed in backend test,
