@@ -2,16 +2,6 @@ name: Backend Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      msowner:
-        required: true
-        default: yudong.si@intel.com   
-      amdowner:
-        required: true
-        default: amd@example.com
-      intelowner:
-        required: true
-        default: yudong.si@intel.com,jian.hui.li@intel.com
   push:
     branches: [debug]
 
@@ -174,7 +164,7 @@ jobs:
         uses: ./.github/actions/sent-mail
         with:
           jobname: Integration-Tests-Shared-Middle-Layer
-          jobowner: ${{ github.event.inputs.msowner }}
+          jobowner: ${{ secrets.MAIL_MS_RECEIVERS }}
           ghrepo: ${{ github.repository }}
           ghrunid: ${{ github.run_id }}   
       - name: Integration-Tests-AMD-Notify
@@ -182,7 +172,7 @@ jobs:
         uses: ./.github/actions/sent-mail
         with:
           jobname: Integration-Tests-AMD
-          jobowner: ${{ github.event.inputs.amdowner }}
+          jobowner: ${{ secrets.MAIL_AMD_RECEIVERS }}
           ghrepo: ${{ github.repository }}
           ghrunid: ${{ github.run_id }}
       - name: Integration-Tests-Intel-Notify
@@ -190,7 +180,7 @@ jobs:
         uses: ./.github/actions/sent-mail
         with:
           jobname: Integration-Tests-Intel
-          jobowner: ${{ github.event.inputs.intelowner }}
+          jobowner: ${{ secrets.MAIL_INTEL_RECEIVERS }}
           ghrepo: ${{ github.repository }}
           ghrunid: ${{ github.run_id }}
 
